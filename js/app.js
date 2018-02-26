@@ -3,6 +3,7 @@ const form = document.querySelector('#form');
 const validateIfIsNumber = numero => {
   let cvvStatus = document.getElementById('cvv-status');
   if (!/^([0-9])*$/.test(numero)) {
+    cvvStatus.classList.remove("has-error");
     cvvStatus.classList.add("has-error");
     return false;
   } else {
@@ -35,13 +36,14 @@ const validateNumCard = num => {
     })
     let sum = digits.reduce((prev, cur) => prev + cur, 0);
     if (sum % 10 === 0) {
-      tdcStatus.classList.add("has-success")
+      tdcStatus.classList.remove("has-error");
+      tdcStatus.classList.add("has-success");
       return true;
     }
-    tdcStatus.classList.add("has-error")
+    tdcStatus.classList.add("has-error");
     return false;
   }
-  tdcStatus.classList.add("has-error")
+  tdcStatus.classList.add("has-error");
   return false
 };
 // Validadcion del Nombre
@@ -49,16 +51,17 @@ const validateNumCard = num => {
 const validateName = name => {
   let nameStatus = document.getElementById('name-status');
   if (/\d/.test(name)) { // verificar si el string tiene números
-    nameStatus.classList.add("has-error")
+    nameStatus.classList.add("has-error");
     return false;
   } else {
     const nameArray = name.split(' ');
     console.log(nameArray);
     if (nameArray[0] === '' || nameArray.length < 2) { //verificar si el string tiene espacios al principio o tiene menos de dos palabras
-      nameStatus.classList.add("has-error")
+      nameStatus.classList.add("has-error");
       return false
     }
-    nameStatus.classList.add("has-success")
+    nameStatus.classList.remove("has-error");
+    nameStatus.classList.add("has-success");
     return true;
   }
 };
