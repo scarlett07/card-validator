@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- <link rel="stylesheet" href="css/vendors/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="css/main.css">
+  <link href="css/vendors/bootstrap.min.css" rel="stylesheet" media="screen">
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+
+  <title>Card Validador</title>
+</head>
+
+<body>
+  <form id="form">
+    <div class="form-group ">
+      <label for="cn">Número de tarjeta</label>
+      <input type="text" maxlength="16" minlength="16" id="cn" required name="cn" />
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+    <div class="form-group">
+      <label for="exp">Fecha de vencimiento</label>
+      <input id="exp" name="exp" required type="month" min="2018-03"  max="2028-02"/>
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+    <div class="form-group has-feedback">
+      <label class="control-label" for="cvv">CVV</label>
+      <input type="text" maxlength="3" minlength="3" required id="cvv" name="cvv" aria-describedby="inputError2Status" />
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+    <div class="form-group">
+      <label for="name">Nombre completo</label>
+      <input maxlength="123" required id="name" name="name" />
+      <span class="glyphicon form-control-feedback" aria-hidden="true"></span>
+    </div>
+    <input type="submit" value="Pagar" />
+  </form>
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> -->
+  <script src="http://code.jquery.com/jquery.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="js/app.js"></script>
+</body>
+
+</html>
