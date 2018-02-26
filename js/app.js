@@ -13,9 +13,9 @@ const validateIfIsNumber = numero => {
 //Validación tdc
 const validateNumCard = num => {
   let tdcStatus = document.getElementById('tdc-status');
-  if (!/^([0-9])*$/.test(num)) {
+  if (!/^([0-9])*$/.test(num)===false) {
     const numberCardInverse = num.split('').reverse();
-  //  console.log(numberCardInverse);
+    console.log(numberCardInverse);
     const digits = numberCardInverse.map((element, index) => {
       if (index % 2 !== 0) { //aqui tomamos las posiciones pares para sacar el valor
         let newDigit = 0;
@@ -54,7 +54,7 @@ const validateName = name => {
   } else {
     const nameArray = name.split(' ');
     console.log(nameArray);
-    if (nameArray[0]==='' || nameArray.length < 2) { //verificar si el string tiene espacios al principio o tiene menos de dos palabras
+    if (nameArray[0] === '' || nameArray.length < 2) { //verificar si el string tiene espacios al principio o tiene menos de dos palabras
       nameStatus.classList.add("has-error")
       return false
     }
@@ -71,8 +71,8 @@ const validateCardDetails = form => {
   const name = datos[3].value;
   const tdc = datos[0].value;
   validateName(name);
-  validateNumCard(tdc);
-  validateIfIsNumber(cvv);
+  validateIfIsNumber(cvv)
+  console.log(validateNumCard(tdc));
   if (validateIfIsNumber(cvv) && validateNumCard(tdc) && validateName(name)) {
     return true
   }
