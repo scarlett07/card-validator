@@ -3,10 +3,10 @@ const form = document.querySelector('#form');
 const validateIfIsNumber = numero => {
   let cvvStatus = document.getElementById('cvv-status');
   if (!/^([0-9])*$/.test(numero)) {
-    cvvStatus.classList.remove("has-error");
     cvvStatus.classList.add("has-error");
     return false;
   } else {
+    cvvStatus.classList.remove("has-error");
     cvvStatus.classList.add("has-success")
     return true
   }
@@ -60,7 +60,7 @@ const validateName = name => {
       nameStatus.classList.add("has-error");
       return false
     }
-    nameStatus.classList.remove("has-error");
+    nameStatus.class List.remove("has-error");
     nameStatus.classList.add("has-success");
     return true;
   }
