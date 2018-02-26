@@ -1,16 +1,19 @@
 const form = document.querySelector('#form');
 //Validacion de CVV
 const validateIfIsNumber = numero => {
+  let cvvStatus = document.getElementById('cvv-status');
   if (!/^([0-9])*$/.test(numero)) {
-
+    cvvStatus.classList.add("has-error");
     return false;
   } else {
+    cvvStatus.classList.add("has-success")
     return true
   }
 };
 //Validación tdc
 const validateNumCard = num => {
-  if (validateIfIsNumber(num)) {
+  let tdcStatus = document.getElementById('tdc-status');
+  if (!/^([0-9])*$/.test(num)) {
     const numberCardInverse = num.split('').reverse();
   //  console.log(numberCardInverse);
     const digits = numberCardInverse.map((element, index) => {
@@ -32,23 +35,30 @@ const validateNumCard = num => {
     })
     let sum = digits.reduce((prev, cur) => prev + cur, 0);
     if (sum % 10 === 0) {
+      tdcStatus.classList.add("has-success")
       return true;
     }
+    tdcStatus.classList.add("has-error")
     return false;
   }
+  tdcStatus.classList.add("has-error")
   return false
 };
 // Validadcion del Nombre
 
 const validateName = name => {
+  let nameStatus = document.getElementById('name-status');
   if (/\d/.test(name)) { // verificar si el string tiene números
+    nameStatus.classList.add("has-error")
     return false;
   } else {
     const nameArray = name.split(' ');
     console.log(nameArray);
     if (nameArray[0]==='' || nameArray.length < 2) { //verificar si el string tiene espacios al principio o tiene menos de dos palabras
+      nameStatus.classList.add("has-error")
       return false
     }
+    nameStatus.classList.add("has-success")
     return true;
   }
 };
@@ -60,13 +70,16 @@ const validateCardDetails = form => {
   const cvv = datos[2].value;
   const name = datos[3].value;
   const tdc = datos[0].value;
+  validateName(name);
+  validateNumCard(tdc);
+  validateIfIsNumber(cvv);
   if (validateIfIsNumber(cvv) && validateNumCard(tdc) && validateName(name)) {
     return true
   }
   return false
 }
 
-//Detonando el evento que activa la validación 
+//Detonando el evento que activa la validación
 
 form.addEventListener('submit', (e) => {
   e.preventDefault();
