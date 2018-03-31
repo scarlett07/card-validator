@@ -60,7 +60,7 @@ const validateName = name => {
       nameStatus.classList.add("has-error");
       return false
     }
-    nameStatus.class List.remove("has-error");
+    nameStatus.classList.remove("has-error");
     nameStatus.classList.add("has-success");
     return true;
   }
@@ -73,7 +73,7 @@ const validateCardDetails = form => {
   const cvv = datos[2].value;
   const name = datos[3].value;
   const tdc = datos[0].value;
-  validateName(name);
+  console.log(validateName(name));
   validateIfIsNumber(cvv)
   console.log(validateNumCard(tdc));
   if (validateIfIsNumber(cvv) && validateNumCard(tdc) && validateName(name)) {
